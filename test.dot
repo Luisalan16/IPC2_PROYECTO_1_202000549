@@ -1,0 +1,44 @@
+digraph Matrix{
+    node [shape=circle]
+
+    # Nodo principal
+    Mat[label="Test", style = filled, fillcolor = wheat, group = 1, width = 1];
+
+    # Para que no se pierda el orden
+    e0[shape= point, width = 0];
+    e1[shape= point, width = 0];
+
+
+    # Nodos para t y A
+    t[label="t = 1", style = filled, fillcolor = wheat, width = 0.25];
+    A[label="A = 4", style = filled, fillcolor = wheat, width = 0.25];
+
+    # Nodos para los datos
+    d1[label="dato1", style = filled, fillcolor = wheat];
+    d2[label="dato2", style = filled, fillcolor = wheat];
+    d3[label="dato3", style = filled, fillcolor = wheat];
+    d4[label="dato4", style = filled, fillcolor = wheat];
+
+    # Otros nodos
+    dn[label="dato1", style = filled, fillcolor = wheat];
+    dn1[label="dato2", style = filled, fillcolor = wheat];
+    dn2[label="dato3", style = filled, fillcolor = wheat];
+    dn3[label="dato4", style = filled, fillcolor = wheat];
+
+    # Relaciones principales
+    Mat -> t;
+    Mat -> A;
+
+    # Relaciones con los datos
+    Mat -> d1;
+    Mat -> d2;
+    Mat -> d3;
+    Mat -> d4;
+
+    # Siguiendo con los datos
+    d1 -> dn
+    d2 -> dn1
+    d3 -> dn2
+    d4 -> dn3
+
+}
