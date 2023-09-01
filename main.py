@@ -1,5 +1,6 @@
 from lectura import *
 import time
+from linked_list import *
 
 
 """ METODO PARA ELEGIR EN EL MENU """
@@ -67,7 +68,7 @@ while menuP:
             if opcion == 0:
                 info = False
     elif opcion == 5:
-        create_graph()
+        create_graph_senal()
     elif opcion == 0:
         print("Saliendo...")
         time.sleep(1.5)

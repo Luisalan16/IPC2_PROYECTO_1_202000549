@@ -38,18 +38,35 @@ def load_file():
 def process_data():
    Senales.print_Senal()
 
-def create_graph():
-    grafo_matriz = Digraph(format='png')
+def create_graph_senal():
+        datos = 0
+        tmp = Senales.cabeza
+        Ruta = "Senal3"
+        text = '''digraph Matrix{\n
+                node [shape=circle]\n
+                Mat[label='''+str(tmp.nombre)+''', style = filled, fillcolor = wheat, group = 1, width = 1]\n
+                e0[shape= point, width = 0]\n
+                e1[shape= point, width = 0]\n
+                '''
+        
+        while tmp != None:
+            text += '''Mat'''+str(datos)+'''t[label = "t = '''+(tmp.tiempo)+'''", style = filled, fillcolor = wheat, width = 0.25]\n
+                A[label = "A = '''+(tmp.amplitud)+'''", style = filled, fillcolor = wheat, width = 0.25]\n
+            '''
+        
 
-    for senal in Senales.lista_senales:
-        nombre = senal.nombre
-        tiempo = senal.tiempo
-        amplitud = senal.amplitud
-        grafo_matriz.node(nombre, label=f"Nombre: {nombre}\nTiempo: {tiempo}\nAmplitud: {amplitud}")
-        for dato in senal.lista_datos:
-            tiempo_data = dato.tiempo_data
-            amplitud_data = dato.amplitud_data
-            dato_value = dato.dato_value
-            grafo_matriz.node(f"{nombre}_{tiempo_data}_{amplitud_data}", label=f"Valor: {dato_value}")
-
-    grafo_matriz.render('senales', view = True)
+            datos += 1
+            tmp = tmp.siguiente
+        """ for i in range(datos-1,-1,-1):
+            text += '''\nMat'''+str(i)+'''->t''''''->A''' """
+        text +="}"
+        
+        try:
+            src = graphviz.Source(text, format="png")
+            src.render(Ruta)
+            if os.path.exists(Ruta):
+                os.remove(Ruta)
+            os.startfile(str(Ruta)+".png")
+            print("Atención: Se guardo el archivo con el nombre: "+str(Ruta)+".png")
+        except :
+            print("Error")

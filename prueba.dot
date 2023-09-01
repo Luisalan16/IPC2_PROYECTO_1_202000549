@@ -1,0 +1,26 @@
+digraph Matrix{
+
+                node [shape=circle]
+
+                Mat[label=Ejemplo1, style = filled, fillcolor = wheat, group = 1, width = 1];
+
+                e0[shape= point, width = 0];
+
+                e1[shape= point, width = 0];
+            tiempo[label=3, style = filled, fillcolor = wheat, width = 0.25];
+
+            A[label=5, style = filled, fillcolor = wheat, width = 0.25];
+
+            tiempo[label=4, style = filled, fillcolor = wheat, width = 0.25];
+
+            A[label=2, style = filled, fillcolor = wheat, width = 0.25];
+
+            tiempo[label=5, style = filled, fillcolor = wheat, width = 0.25];
+
+            A[label=4, style = filled, fillcolor = wheat, width = 0.25];
+
+            Mat -> tiempo;
+            Mat -> A;
+            }
+
+            
