@@ -40,7 +40,7 @@ class lista_datos:
         tmp = self.cabeza
         while tmp is not None:
             print(
-                f'[t = {tmp.tiempo_data}]|[A = {tmp.amplitud_data}]|[ {tmp.dato_value} ]|')
+                f't = {tmp.tiempo_data}, A = {tmp.amplitud_data} [{tmp.dato_value}]')
             tmp = tmp.siguiente
 
     # Método para remover un nodo
@@ -100,7 +100,6 @@ class Senal:
 class lista_senales:
     def __init__(self):
         self.cabeza = None
-        self.len = 0
 
     # Se crea el método para insertar datos a la lista
     def insertar_senal(self, nombre, tiempo, amplitud):
@@ -157,6 +156,6 @@ class lista_senales:
         tmp=self.cabeza
         while tmp is not None:
             print(
-                f'[Nombre = {tmp.nombre}]| [t = {tmp.tiempo}]|A = [{tmp.amplitud}]')
+                f'"{tmp.nombre}"; t = {tmp.tiempo}, A = {tmp.amplitud}')
             tmp.lista_datos.print_datos()
             tmp=tmp.siguiente

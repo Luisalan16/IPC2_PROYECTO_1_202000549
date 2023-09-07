@@ -10,20 +10,20 @@ digraph Matrix{
 
 
     # Nodos para t y A
-    t[label="t = 1", style = filled, fillcolor = wheat, width = 0.25];
+    t[label="t = 2", style = filled, fillcolor = wheat, width = 0.25];
     A[label="A = 4", style = filled, fillcolor = wheat, width = 0.25];
 
     # Nodos para los datos
-    d1[label="dato1", style = filled, fillcolor = wheat];
-    d2[label="dato2", style = filled, fillcolor = wheat];
-    d3[label="dato3", style = filled, fillcolor = wheat];
-    d4[label="dato4", style = filled, fillcolor = wheat];
+    d1[label="2", style = filled, fillcolor = wheat];
+    d2[label="5", style = filled, fillcolor = wheat];
+    d3[label="6", style = filled, fillcolor = wheat];
+    d4[label="8", style = filled, fillcolor = wheat];
 
     # Otros nodos
-    dn[label="dato1", style = filled, fillcolor = wheat];
-    dn1[label="dato2", style = filled, fillcolor = wheat];
-    dn2[label="dato3", style = filled, fillcolor = wheat];
-    dn3[label="dato4", style = filled, fillcolor = wheat];
+    dn[label="8", style = filled, fillcolor = wheat];
+    dn1[label="9", style = filled, fillcolor = wheat];
+    dn2[label="10", style = filled, fillcolor = wheat];
+    dn3[label="4", style = filled, fillcolor = wheat];
 
     # Relaciones principales
     Mat -> t;

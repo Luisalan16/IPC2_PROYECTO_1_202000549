@@ -2,7 +2,6 @@ from lectura import *
 import time
 from linked_list import *
 
-
 """ METODO PARA ELEGIR EN EL MENU """
 def eleccion(opcion):
     while True:
@@ -28,6 +27,17 @@ def menuP():
     print("|      6. Inicializar sistema              |")
     print("|      0. Salir                            |")
     print("|==========================================|\n")
+
+def Process():
+    print("\n|==========================================|")
+    print("|      CENTRO DE INVESTIGACIONES USAC      |")
+    print("|==========================================|")
+    print("|------------Procesar archivo--------------|")
+    print("|      1. Mostrar Señal                    |")
+    print("|      2. Mostrar Señal convertida         |")
+    print("|      0. Regresar                         |")
+    print("|==========================================|\n")
+
 
 def Infopersonal():
     print("|==========================================|")
@@ -56,8 +66,9 @@ while menuP:
         load_file()
     elif opcion == 2:
         time.sleep(1)
-        print("[--Muestra--]")
         process_data()
+    elif opcion == 3:
+        print("hola")
     elif opcion == 4:
         info = True
         print("Cargando....")
@@ -68,7 +79,8 @@ while menuP:
             if opcion == 0:
                 info = False
     elif opcion == 5:
-        create_graph_senal()
+        test()
+        """ grafo("datos") """
     elif opcion == 0:
         print("Saliendo...")
         time.sleep(1.5)
