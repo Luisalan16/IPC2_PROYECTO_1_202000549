@@ -2,6 +2,7 @@ from lectura import *
 import time
 from linked_list import *
 
+
 """ METODO PARA ELEGIR EN EL MENU """
 def eleccion(opcion):
     while True:
@@ -62,6 +63,7 @@ while menuP:
     menuP()
     opcion = eleccion(1)
     if opcion == 1:
+        print("Cargando....")
         time.sleep(1)
         load_file()
     elif opcion == 2:
@@ -79,8 +81,13 @@ while menuP:
             if opcion == 0:
                 info = False
     elif opcion == 5:
-        test()
-        """ grafo("datos") """
+        print("Cargando....")
+        time.sleep(1)
+        graph()
+    elif opcion == 6:
+        print("Cargando....")
+        time.sleep(1)
+        incializar()
     elif opcion == 0:
         print("Saliendo...")
         time.sleep(1.5)

@@ -13,12 +13,31 @@ class Dato:
         return str(self.tiempo_data, self.amplitud_data, self.dato_value)
 
 # Se crea la lista para guardar los datos
-
-
 class lista_datos:
     def __init__(self):
         self.cabeza = None
 
+    # Se crea el método para insertar datos a la lista
+    def insertar_dato(self, tiempo_data, amplitud_data, dato_value):
+        nuevo = Dato(tiempo_data, amplitud_data, dato_value) # dato se refiere al nodo creado anteriormente
+        
+        # si el primer nodo esta vacio entonces apuntara al nuevo nodo agregado
+        if self.cabeza is None:
+            self.cabeza = nuevo
+        else:
+            tmp = self.cabeza
+            # si la cabeza no es nulo o vacio entonces apuntara al siguiente 
+            while tmp.siguiente is not None:
+                tmp = tmp.siguiente
+            tmp.siguiente = nuevo
+
+    # Se crea método para imprimir los datos de la lista
+    def print_datos(self):
+        tmp = self.cabeza
+        while tmp is not None:
+            print(f'[t = {tmp.tiempo_data}]|[A = {tmp.amplitud_data}]|[ {tmp.dato_value} ]|')
+            tmp = tmp.siguiente
+    
     def graph_data(self,parent):
         data= 1
         txt = ""
@@ -42,30 +61,6 @@ class lista_datos:
                 txt += f'd{i}->d{i+4}\n' 
         return txt
 
-    # Se crea el método para insertar datos a la lista
-    def insertar_dato(self, tiempo_data, amplitud_data, dato_value):
-        # dato se refiere al nodo creado anteriormente
-        nuevo = Dato(tiempo_data, amplitud_data, dato_value)
-
-        # si el primer nodo esta vacio entonces apuntara al nuevo nodo agregado
-        if self.cabeza is None:
-            self.cabeza = nuevo
-        else:
-            tmp = self.cabeza
-            # si la cabeza no es nulo o vacio entonces apuntara al siguiente
-            while tmp.siguiente is not None:
-                tmp = tmp.siguiente
-            tmp.siguiente = nuevo
-
-    # Se crea método para imprimir los datos de la lista
-
-    def print_datos(self):
-        tmp = self.cabeza
-        while tmp is not None:
-            print(
-                f't = {tmp.tiempo_data}, A = {tmp.amplitud_data} [{tmp.dato_value}]')
-            tmp = tmp.siguiente
-
 
 class Senal:
     def __init__(self, nombre, tiempo, amplitud):
@@ -77,43 +72,46 @@ class Senal:
 
     def __str__(self):
         return (self.nombre, self.tiempo, self.amplitud)
-
+    
 # Se crea la lista para guardar los datos
-
-
 class lista_senales:
     def __init__(self):
         self.cabeza = None
-
-    def iterar(self):
-        tmp = self.cabeza
-        while tmp is not None:
-            yield tmp
-            tmp = tmp.siguiente
+        self.len = 0
 
     # Se crea el método para insertar datos a la lista
     def insertar_senal(self, nombre, tiempo, amplitud):
-        # dato se refiere al nodo creado anteriormente
-        nuevo = Senal(nombre, tiempo, amplitud)
-
+        nuevo = Senal(nombre, tiempo, amplitud) # dato se refiere al nodo creado anteriormente
+        
         # si el primer nodo esta vacio entonces apuntara al nuevo nodo agregado
         if self.cabeza is None:
             self.cabeza = nuevo
         else:
             tmp = self.cabeza
-            # si la cabeza no es nulo o vacio entonces apuntara al siguiente
+            # si la cabeza no es nulo o vacio entonces apuntara al siguiente 
             while tmp.siguiente is not None:
                 tmp = tmp.siguiente
             tmp.siguiente = nuevo
-
-    
+    def get_senal(self, nombre):
+        tmp = self.cabeza
+        while tmp is not None:
+            if tmp.nombre==nombre :
+                return tmp
+            tmp=tmp.siguiente
+        return None
+    def print_Senal(self):
+        tmp = self.cabeza
+        while tmp is not None:
+            print(f'[Nombre = {tmp.nombre}]| [t = {tmp.tiempo}]|A = [{tmp.amplitud}]')
+            tmp.lista_datos.print_datos()
+            tmp = tmp.siguiente
     def graph_senal(self):
         
         tmp = self.cabeza
         while tmp is not None:
             ruta = tmp.nombre
             txt=""" digraph """+tmp.nombre+"""{\n node [shape= circle]\n"""+ tmp.nombre+"""[label="""+tmp.nombre+"""]\n"""
-            txt+=f'T[label="t={tmp.tiempo}"] \n A[label="A={tmp.amplitud}"]\n'
+            txt+=f'T[label="T={tmp.tiempo}"] \n A[label="A={tmp.amplitud}"]\n'
             txt+=f'{tmp.nombre}->T\n{tmp.nombre}->A\n'
             txt+=tmp.lista_datos.graph_data(tmp.nombre)
             txt+='}'
@@ -129,20 +127,4 @@ class lista_senales:
                 print("Error")
             tmp = tmp.siguiente
 
-    def get_senal(self, nombre):
-        tmp=self.cabeza
-        while tmp is not None:
-            if tmp.nombre == nombre:
-                return tmp
-            tmp=tmp.siguiente
-        return None
-
-    def print_Senal(self):
-        tmp=self.cabeza
-        while tmp is not None:
-            print(
-                f'"{tmp.nombre}"; t = {tmp.tiempo}, A = {tmp.amplitud}')
-            tmp.lista_datos.print_datos()
-            tmp=tmp.siguiente
-
-
+    
